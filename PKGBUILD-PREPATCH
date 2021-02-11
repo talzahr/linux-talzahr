@@ -5,17 +5,17 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux-talzahr-prepatch
+pkgbase=linux-talzahr
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=5.10-rc4
-pkgver=5.10rc4
+_tag=5.11-rc7
+pkgver=5.11rc7
 pkgrel=1
 pkgdesc="Linux Talzahr prepatch kernel"
 arch=(x86_64)
 url="https://kernel.org/"
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole git
+  bc kmod libelf pahole git cpio perl tar xz
 )
 ### Removed the deps for building docs -TALZAHR
 #makedepends=(
@@ -28,6 +28,7 @@ _srcname=linux
 source=(
   "https://git.kernel.org/torvalds/t/linux-${_tag}.tar.gz"
   config         # the main kernel config file
+  OpenRGB.patch
 )
 validpgpkeys=(
   'SKIP'  # Linus Torvalds
@@ -35,6 +36,7 @@ validpgpkeys=(
   '90c4d0dddbb5e66e14fbc051449c3cc2303fe616eb7d97a8a2b73a0b4796f1ad'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
